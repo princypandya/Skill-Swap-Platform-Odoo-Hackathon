@@ -1,20 +1,23 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import Requests from "./pages/Requests";
+// src/App.jsx
+import React from 'react';
+import Header from './components/Header';
+import './App.css';
 
 const App = () => {
   return (
-    <Router>
+    <div>
       <Header />
-      <main className="pt-20 px-4 min-h-screen bg-gray-100">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/requests" element={<Requests />} />
-        </Routes>
-      </main>
-    </Router>
+      <section className="home-container">
+        <h1 className="home-heading">Swap Skills. Learn Together.</h1>
+        <p className="home-subtext">
+          Offer what you know. Learn what you don’t. Connect with people — completely free.
+        </p>
+        <div className="home-buttons">
+          <button className="post-button">Post a Skill</button>
+          <button className="browse-button">Browse Skills</button>
+        </div>
+      </section>
+    </div>
   );
 };
 

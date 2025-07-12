@@ -1,56 +1,66 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { FaUserCircle, FaBars } from "react-icons/fa";
+// src/components/Header.jsx
+import React, { useState } from 'react';
+import './Header.css';
 
 const Header = () => {
-  const [showMenu, setShowMenu] = useState(false);
-  const [showMobileNav, setShowMobileNav] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState('login');
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const openAuthModal = (mode = 'login') => {
+    setAuthMode(mode);
+    setIsAuthModalOpen(true);
+  };
+  const closeAuthModal = () => setIsAuthModalOpen(false);
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-blue-600 text-white z-50 shadow-md">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
-        {/* Logo */}
-        <div className="text-xl font-bold">
-          <Link to="/">SkillSwap</Link>
-        </div>
+    <>
+      <header className="header">
+        <div className="container">
+          <div className="nav-bar">
+            {/* Logo */}
+            <div className="logo-section">
+              <div className="logo-icon">L</div>
+              <span className="logo-text">Logo</span>
+            </div>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-6 text-sm">
-          <Link to="/" className="hover:underline">Home</Link>
-          <Link to="/requests" className="hover:underline">Requests</Link>
+            {/* Desktop Navigation */}
+            <nav className="nav-links">
+              <a href="#home">Home</a>
+              <a href="#requests">Requests</a>
+            </nav>
 
-          <div className="relative">
-            <FaUserCircle
-              size={24}
-              className="cursor-pointer"
-              title="Profile"
-              onClick={() => setShowMenu(!showMenu)}
-            />
-            {showMenu && (
-              <div className="absolute right-0 mt-2 bg-white text-black rounded shadow-lg w-40 z-50">
-                <button className="w-full px-4 py-2 text-left hover:bg-gray-100">Login</button>
-                <button className="w-full px-4 py-2 text-left hover:bg-gray-100">Register</button>
-              </div>
-            )}
+            {/* Right Side Icons */}
+            <div className="right-icons">
+              <button onClick={() => openAuthModal('login')} className="auth-button">👤</button>
+              <button onClick={toggleMenu} className="menu-toggle">
+                {isMenuOpen ? '✕' : '☰'}
+              </button>
+            </div>
           </div>
-        </nav>
 
-        {/* Mobile Menu Icon */}
-        <div className="md:hidden flex items-center">
-          <FaBars size={22} className="cursor-pointer" onClick={() => setShowMobileNav(!showMobileNav)} />
+          {/* Mobile Menu */}
+          {isMenuOpen && (
+            <div className="mobile-menu">
+              <a href="#home">Home</a>
+              <a href="#requests">Requests</a>
+            </div>
+          )}
         </div>
-      </div>
+      </header>
 
-      {/* Mobile Dropdown */}
-      {showMobileNav && (
-        <div className="md:hidden bg-blue-700 px-4 pb-4 space-y-2 text-sm">
-          <Link to="/" className="block hover:underline">Home</Link>
-          <Link to="/requests" className="block hover:underline">Requests</Link>
-          <button className="block w-full text-left hover:underline">Login</button>
-          <button className="block w-full text-left hover:underline">Register</button>
+      {/* Auth Modal */}
+      {isAuthModalOpen && (
+        <div className="modal-overlay">
+          <div className="auth-modal">
+            <button onClick={closeAuthModal} className="close-button">✕</button>
+            <h2>{authMode === 'login' ? 'Login' : 'Register'}</h2>
+            <p>Form coming soon...</p>
+          </div>
         </div>
       )}
-    </header>
+    </>
   );
 };
 
