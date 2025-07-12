@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./Header.css"; // Import the CSS file
+import Login from "../pages/login";
+import Signup from "../pages/signup";
+import Requests from "../pages/Requests";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,8 +29,8 @@ function Header() {
         <nav className={`nav-links ${isMenuOpen ? "nav-open" : ""}`}>
           <Link to="/" className={location.pathname === "/" ? "active" : ""}>Home</Link>
           <Link to="/requests" className={location.pathname === "/requests" ? "active" : ""}>Requests</Link>
-          <Link to="/Gallery" className={location.pathname === "/Gallery" ? "active" : ""}>Gallery</Link>
-          <Link to="/Education" className={location.pathname === "/Education" ? "active" : ""}>Education</Link>
+          <Link to="/login" className={location.pathname === "/login" ? "active" : ""}>Login</Link>
+          <Link to="/signup" className={location.pathname === "/signup" ? "active" : ""}>SignUp</Link>
         </nav>
 
         {/* Desktop Button */}
