@@ -1,0 +1,104 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.requests-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 12px;
+}
+
+.filter-bar select,
+.filter-bar input {
+  flex: 1 1 200px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  min-width: 120px;
+}
+
+.filter-bar select:focus,
+.filter-bar input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.requests-list {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.request-wrapper {
+  margin-bottom: 16px;
+}
+
+/* Pagination stays pinned at the bottom */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1rem;
+  padding: 12px 0;
+  background-color: white;
+  box-shadow: 0 -1px 5px rgba(0,0,0,0.05);
+  position: sticky;
+  bottom: 0;
+}
+
+.pagination span {
+  cursor: pointer;
+  padding: 6px 12px;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.pagination span:hover {
+  background-color: #ddd;
+}
+
+.pagination .current {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+/* Responsive Layout */
+@media (max-width: 600px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-bar select,
+  .filter-bar input {
+    width: 100%;
+  }
+
+  .pagination {
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}

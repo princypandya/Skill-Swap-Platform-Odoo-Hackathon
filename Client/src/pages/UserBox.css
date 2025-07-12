@@ -1,106 +1,178 @@
 .user-box {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #fff;
-  border: 3px solid black; /* fallback */
-  border-radius: 20px;
+  gap: 16px;
   padding: 16px;
-  margin: 12px auto;
-  max-width: 900px;
-  box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
   flex-wrap: wrap;
-  transition: border-color 0.3s ease;
-}
-
-/* Dynamic border colors */
-.high-rating {
-  border-color: green;
-}
-
-.mid-rating {
-  border-color: #f1c40f; /* yellow */
-}
-
-.low-rating {
-  border-color: red;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .profile-section {
-  flex: 0 0 100px;
+  flex-shrink: 0;
 }
 
 .profile-photo {
   width: 80px;
   height: 80px;
-  border-radius: 50%;
-  border: 2px solid black;
   object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #007bff;
 }
 
 .info-section {
   flex: 1;
-  margin-left: 16px;
-  min-width: 250px;
+  min-width: 200px;
 }
 
 .user-name {
+  margin: 0 0 8px;
   font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 8px;
 }
 
 .skills {
-  margin-bottom: 6px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
+  margin: 6px 0;
 }
 
 .label {
-  font-weight: 500;
-}
-
-.label.offered {
-  color: green;
-}
-
-.label.wanted {
-  color: #007bff;
+  font-weight: bold;
+  margin-right: 6px;
 }
 
 .skill-tag {
-  background: #eee;
-  border: 2px solid black;
-  border-radius: 12px;
-  padding: 4px 10px;
-  font-size: 0.9rem;
+  background-color: #e0f3ff;
+  padding: 4px 8px;
+  margin: 3px;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 0.85rem;
 }
 
 .action-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-width: 100px;
+  justify-content: space-between;
+  min-width: 120px;
+  gap: 8px;
+  text-align: right;
+}
+
+/* Accept / Reject buttons styled like screenshot */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+  justify-content: flex-end;
+}
+
+.accept {
+  background-color: #d4f9d4;
+  color: #006400;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.accept:hover {
+  background-color: #b8efb8;
+}
+
+.reject {
+  background-color: #fcd6d6;
+  color: #b30000;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reject:hover {
+  background-color: #fbbcbc;
+}
+
+.status-label {
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 0.95rem;
+  width: fit-content;
   margin-left: auto;
 }
 
-.request-button {
-  background-color: #b4ecff;
-  border: 2px solid black;
-  border-radius: 10px;
-  padding: 6px 14px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s ease;
+.status-label.accepted {
+  background-color: #d4f9d4;
+  color: #006400;
 }
 
-.request-button:hover {
-  background-color: #7bd2f9;
+.status-label.rejected {
+  background-color: #fcd6d6;
+  color: #b30000;
 }
 
 .rating {
-  margin-top: 8px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Colored rating */
+.high-rating .rating {
+  color: #28a745;
+}
+.mid-rating .rating {
+  color: #ffc107;
+}
+.low-rating .rating {
+  color: #dc3545;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .user-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .action-section {
+    align-items: center;
+  }
+
+  .request-btn {
+  background-color: #e0f0ff;
+  color: #004080;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 8px;
+}
+
+
+.request-btn:hover {
+  background-color: #c0e3ff;
+}
+
+
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .skill-tag {
+    display: inline-block;
+  }
 }
