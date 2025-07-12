@@ -1,0 +1,61 @@
+/* Home Section */
+.home-section {
+  text-align: center;
+  margin-top: 40px;
+  padding: 0 16px;
+}
+
+.home-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+.home-description {
+  color: #4b5563;
+  margin-bottom: 24px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Button Container */
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.post-skill-button {
+  background-color: #2563eb;
+  color: white;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+}
+
+.post-skill-button:hover {
+  background-color: #1d4ed8;
+}
+
+.browse-skill-button {
+  background-color: #e5e7eb;
+  color: #111827;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+}
+
+.browse-skill-button:hover {
+  background-color: #d1d5db;
+}
