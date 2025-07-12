@@ -4,8 +4,10 @@ from sqlalchemy.orm import relationship
 from ..db import Base
 class Feedback(Base):
     __tablename__ = 'feedback'
+    __table_args__ = {'schema': 'skillswap'}
+
     id = Column(Integer, primary_key=True)
-    request = Column(Integer, ForeignKey('requested.id'))
+    request_id = Column(Integer, ForeignKey('skillswap.requested.id'))
     comment = Column(Text)
 
-    request_obj = relationship("Requested", back_populates="feedbacks")
+    request = relationship("Requested", back_populates="feedbacks")  # Renamed from request_obj

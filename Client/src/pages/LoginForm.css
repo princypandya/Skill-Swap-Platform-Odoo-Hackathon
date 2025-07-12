@@ -1,0 +1,82 @@
+/* Container for vertical & horizontal center */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fdf8f3;
+  padding: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Box with shadow and rounded corners */
+.login-box {
+  background-color: white;
+  padding: 32px;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Title */
+.login-title {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* Form groups spacing */
+.login-form .form-group {
+  margin-bottom: 16px;
+}
+
+/* Labels */
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* Inputs */
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: #f48f0f; /* Orange */
+  box-shadow: 0 0 5px #f48f0f;
+}
+
+/* Error message */
+.form-error {
+  color: #d32f2f; /* red */
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* Submit button */
+.form-button {
+  width: 100%;
+  background-color: #f48f0f; /* Orange */
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #d97706; /* darker orange */
+}

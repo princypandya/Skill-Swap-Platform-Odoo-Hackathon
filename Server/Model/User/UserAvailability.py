@@ -1,12 +1,14 @@
-from sqlalchemy import Table, Column, Integer, ForeignKey, String
+from sqlalchemy import Column, Integer, ForeignKey, String
 from sqlalchemy.orm import relationship
-# from .role_permissions import role_permissions
 from ..db import Base
+# from .Users import ProfileUser  # import the related model
 
 class UserAvailability(Base):
     __tablename__ = 'useravailabilitys'
+    __table_args__ = {'schema': 'skillswap'}
+
     id = Column(Integer, primary_key=True)
     Availability = Column(String(45))
-    userId = Column(String(45), ForeignKey('user.id'))
+    userId = Column(Integer, ForeignKey('skillswap.user.id'))  # Integer here!
 
-    user = relationship("User", back_populates="availabilities")
+    user = relationship("ProfileUser", back_populates="availabilities")

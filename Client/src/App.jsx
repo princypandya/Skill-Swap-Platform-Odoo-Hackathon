@@ -6,9 +6,11 @@ import Home from "./pages/Home";
 import Requests from "./pages/Requests";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
+import { AuthProvider } from "./Auth/AuthContext";
 
 const App = () => {
   return (
+    <AuthProvider>
     <BrowserRouter>
       <Header />
       <Routes>
@@ -19,6 +21,7 @@ const App = () => {
         {/* Add more routes as needed */}
       </Routes>
     </BrowserRouter>
+    </AuthProvider>
   );
 };
 

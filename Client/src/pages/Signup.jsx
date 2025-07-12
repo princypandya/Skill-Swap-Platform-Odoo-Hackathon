@@ -5,11 +5,43 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [visibility, setVisibility] = useState("public");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You can use `visibility` state here for backend/form submission
-    console.log("Visibility:", visibility);
+
+    const form = e.target;
+    const payload = {
+      name: form[0].value,
+      email: form[1].value,
+      password: form[2].value,
+      confirm_password: form[3].value,
+      visibility: visibility,
+      location: "", // optional, add if needed
+      image: null   // optional, handle file/image upload if needed
+    };
+
+    try {
+      const response = await fetch(`http://${import.meta.env.VITE_NETWORK}:${import.meta.env.VITE_PORT}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert("Signup successful!");
+        console.log(data);
+        // Redirect or login user
+      } else {
+        alert(data.detail || "Signup failed");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong");
+    }
   };
+
 
   return (
     <div className="auth-container">

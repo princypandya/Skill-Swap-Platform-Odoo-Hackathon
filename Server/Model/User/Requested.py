@@ -5,11 +5,13 @@ from ..db import Base
 
 class Requested(Base):
     __tablename__ = 'requested'
+    __table_args__ = {'schema': 'skillswap'}
+
     id = Column(Integer, primary_key=True)
-    userRequested = Column(Integer, ForeignKey('user.id'))
-    userResived = Column(Integer, ForeignKey('user.id'))
+    userRequested = Column(Integer, ForeignKey('skillswap.user.id'))
+    userResived = Column(Integer, ForeignKey('skillswap.user.id'))
     Accepted = Column(Boolean)
 
-    requester = relationship("User", foreign_keys=[userRequested], back_populates="requests_made")
-    receiver = relationship("User", foreign_keys=[userResived], back_populates="requests_received")
+    requester = relationship("ProfileUser", foreign_keys=[userRequested], back_populates="requests_made")
+    receiver = relationship("ProfileUser", foreign_keys=[userResived], back_populates="requests_received")
     feedbacks = relationship("Feedback", back_populates="request")

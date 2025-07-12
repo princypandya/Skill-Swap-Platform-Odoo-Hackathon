@@ -43,7 +43,7 @@ def startup_event():
 
 
 app.include_router(auth_router)
-
+app.include_router(UserInfo)
 
 
 # Add this block to run with `python main.py`
