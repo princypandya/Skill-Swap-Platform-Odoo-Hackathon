@@ -27,20 +27,25 @@ const Home = () => {
 
   if (loading) return <div>Loading users...</div>;
   if (error) return <div>Error loading users.</div>;
-  const formatSkills = (skillsArray) => {
+  const extractSkillNames = (skillsArray) => {
     if (!Array.isArray(skillsArray) || skillsArray.length === 0) return [];
-    return skillsArray.map(skill => skill.skill);
+    return skillsArray.map(skillObj => skillObj.Skills);
   };
 
   return (
     <div className="home-container">
+      <div>
+        <h1>Welcome to Skillzyy</h1>  
+        <h3>A place where you can Swap Skills and Learn Together</h3>
+        <p>Offer what you know, Learn what you don't</p>
+      </div>
       <div className="request-wrapper">
         {users.map((user) => (
         <UserBox
           key={user.id}
           name={user.username}
-          skillsOffered={formatSkills(user.userskills)}
-          skillsWanted={formatSkills(user.wantedskills)}
+          skillsOffered={extractSkillNames(user.userskills)}
+          skillsWanted={extractSkillNames(user.wantedskills)}
           rating={user.rating ?? 0}
           profilePhoto={user.profilePhoto ?? "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
           showRequestButton={true}

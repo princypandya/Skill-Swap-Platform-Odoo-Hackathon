@@ -42,6 +42,7 @@ const LoginForm = () => {
 
       const data = response.data;
       login(data.access_token, data.refresh_token, data.permissions || [], userName);
+      // console.log(token);
       navigate("/");
     // } catch (err) {
     //   setError("Invalid username or password");

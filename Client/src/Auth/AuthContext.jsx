@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
     // console.log("🔄 Attempting to refresh access token...");
     try {
       const response = await axios.post(
-        `http://${process.env.REACT_APP_NETWORK}:${process.env.REACT_APP_PORT}/refresh`,
+        `http://${import.meta.env.VITE_NETWORK}:${import.meta.env.VITE_PORT}/refresh`,
         refreshToken,
         {
           headers: {
