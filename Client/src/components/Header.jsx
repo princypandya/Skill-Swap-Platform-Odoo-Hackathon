@@ -54,6 +54,8 @@ function Header() {
       <div className="dropdown-menu">
         <button onClick={() => navigate("/login")}>Login</button>
         <button onClick={() => navigate("/signup")}>Sign Up</button>
+        <button onClick={() => navigate("/profile")}>Profile</button>
+        
       </div>
     )}
   </div>
