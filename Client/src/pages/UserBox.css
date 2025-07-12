@@ -1,0 +1,106 @@
+.user-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border: 3px solid black; /* fallback */
+  border-radius: 20px;
+  padding: 16px;
+  margin: 12px auto;
+  max-width: 900px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  flex-wrap: wrap;
+  transition: border-color 0.3s ease;
+}
+
+/* Dynamic border colors */
+.high-rating {
+  border-color: green;
+}
+
+.mid-rating {
+  border-color: #f1c40f; /* yellow */
+}
+
+.low-rating {
+  border-color: red;
+}
+
+.profile-section {
+  flex: 0 0 100px;
+}
+
+.profile-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid black;
+  object-fit: cover;
+}
+
+.info-section {
+  flex: 1;
+  margin-left: 16px;
+  min-width: 250px;
+}
+
+.user-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.skills {
+  margin-bottom: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.label {
+  font-weight: 500;
+}
+
+.label.offered {
+  color: green;
+}
+
+.label.wanted {
+  color: #007bff;
+}
+
+.skill-tag {
+  background: #eee;
+  border: 2px solid black;
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 0.9rem;
+}
+
+.action-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+  margin-left: auto;
+}
+
+.request-button {
+  background-color: #b4ecff;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 6px 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.request-button:hover {
+  background-color: #7bd2f9;
+}
+
+.rating {
+  margin-top: 8px;
+  font-size: 0.85rem;
+}

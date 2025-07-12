@@ -25,7 +25,7 @@ function Header() {
         {/* Navigation */}
         <nav className={`nav-links ${isMenuOpen ? "nav-open" : ""}`}>
           <Link to="/" className={location.pathname === "/" ? "active" : ""}>Home</Link>
-          <Link to="/aboutUs" className={location.pathname === "/aboutUs" ? "active" : ""}>About</Link>
+          <Link to="/requests" className={location.pathname === "/requests" ? "active" : ""}>Requests</Link>
           <Link to="/Gallery" className={location.pathname === "/Gallery" ? "active" : ""}>Gallery</Link>
           <Link to="/Education" className={location.pathname === "/Education" ? "active" : ""}>Education</Link>
         </nav>

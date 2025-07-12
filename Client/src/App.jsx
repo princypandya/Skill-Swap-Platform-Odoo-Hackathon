@@ -2,10 +2,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-
-// Temporary placeholder components
-const Home = () => <div className="p-8 text-xl">Welcome to Home Page</div>;
-const Requests = () => <div className="p-8 text-xl">Requests Page</div>;
+import Home from "./pages/Home";
+import Requests from "./pages/Requests";
 
 const App = () => {
   return (
