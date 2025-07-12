@@ -6,12 +6,8 @@ import Home from "./pages/Home";
 import Requests from "./pages/Requests";
 import Login from "./pages/Login";
 import Signup from "./pages/signup";
-
 import { AuthProvider } from "./Auth/AuthContext";
-
 import Profile from "./pages/profile";
-
-
 const App = () => {
   return (
     <AuthProvider>

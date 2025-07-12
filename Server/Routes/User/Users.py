@@ -5,14 +5,14 @@ from sqlalchemy.orm import Session, joinedload
 from typing import List
 from auth.security import hash_password
 from Model.db import get_db
-from Model import User, ProfileUser, Skills, UserSkills, Requested, Feedback, UserAvailability
+from Model import User, ProfileUser, Skills, UserSkills, Requested, Feedback, UserAvailability, UserWanted
 from Schema import (
-    AppUserCreate, AppUserOut,
+    AppUserCreate, UserAPPOut,
     AppSkillCreate, AppSkillOut,
     AppUserSkillCreate, AppUserSkillOut,
     AppRequestedCreate, AppRequestedOut,
     AppFeedbackCreate, AppFeedbackOut,
-    AppAvailabilityCreate, AppAvailabilityOut
+    AppAvailabilityCreate, AppAvailabilityOut, UserOut
 )
 
 UserInfo = InferringRouter()
@@ -46,12 +46,16 @@ class API:
 
         # return auth_user
 
-    @UserInfo.get("/users", response_model=List[UserOut])
-    def get_users(db: Session = Depends(get_db)):
+    @UserInfo.get("/getAppUser", response_model=List[UserAPPOut])
+    def get_users(self, db: Session = Depends(get_db)):
         users = db.query(ProfileUser).options(
-            joinedload(ProfileUser.skills_have).joinedload("skill"),
-            joinedload(ProfileUser.skills_want).joinedload("skill"),
+            joinedload(ProfileUser.skills_have).joinedload(UserSkills.skill),
+            joinedload(ProfileUser.skills_want).joinedload(UserWanted.skill),
         ).all()
+        # for user in users:
+        #     print(UserOut.from_orm(user).dict())
+
+        # print([user.Name for user in users])  # confirm the attribute exists and has values
         return users
 
     # ---------- Skills ----------

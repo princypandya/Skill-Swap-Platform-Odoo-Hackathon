@@ -21,6 +21,10 @@ class ProfileUser(Base):
     requests_received = relationship("Requested", foreign_keys='Requested.userResived', back_populates="receiver")
 
     @property
+    def username(self):
+        return self.Name
+
+    @property
     def userskills(self):
         return [us.skill for us in self.skills_have]
 

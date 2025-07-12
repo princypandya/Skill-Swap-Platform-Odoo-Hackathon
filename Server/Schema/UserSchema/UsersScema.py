@@ -1,8 +1,30 @@
-from pydantic import BaseModel
-from typing import Optional, List
+from pydantic import BaseModel, Field
+from typing import List, Optional
+
+# ---------- SKILLS ----------
+class SkillOut(BaseModel):
+    skill: str = Field(alias="Skills")  # ✅ map the DB field 'Skills' to 'skill'
+
+    class Config:
+        from_attributes = True
+        populate_by_name = True
 
 
 # ---------- USER ----------
+class UserAPPOut(BaseModel):
+    id: int
+    username: str  # mapped from `Name` via @property in SQLAlchemy model
+    Location: Optional[str] = None
+    Image: Optional[str] = None
+    Email: Optional[str] = None
+    userskills: List[SkillOut] = []
+    wantedskills: List[SkillOut] = []
+
+    class Config:
+        from_attributes = True
+
+
+# ---------- USER CREATE ----------
 class AppUserCreate(BaseModel):
     name: str
     email: str
@@ -11,43 +33,6 @@ class AppUserCreate(BaseModel):
     visibility: Optional[str] = "public"
     location: Optional[str] = ""
     image: Optional[str] = None
-
-class SkillOut(BaseModel):
-    skill: str
-
-    class Config:
-        from_attributes = True
-
-class UserOut(BaseModel):
-    id: int
-    name: str
-    userskills: List[SkillOut]
-    wantedskills: List[SkillOut]
-
-    class Config:
-        from_attributes = True
-
-class AppUserCreates(BaseModel):
-    Name: str
-    Location: Optional[str] = None
-    Image: Optional[str] = None
-
-class AppUserOut(AppUserCreates):
-    id: int
-
-    class Config:
-        orm_mode = True
-
-
-# ---------- SKILLS ----------
-class AppSkillCreate(BaseModel):
-    Skills: str
-
-class AppSkillOut(AppSkillCreate):
-    id: int
-
-    class Config:
-        orm_mode = True
 
 
 # ---------- USER SKILLS ----------
@@ -70,7 +55,7 @@ class AppRequestedOut(AppRequestedCreate):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 # ---------- FEEDBACK ----------
@@ -82,7 +67,7 @@ class AppFeedbackOut(AppFeedbackCreate):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 # ---------- AVAILABILITY ----------
@@ -94,4 +79,15 @@ class AppAvailabilityOut(AppAvailabilityCreate):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
+
+
+# ---------- SKILL CREATE/READ ----------
+class AppSkillCreate(BaseModel):
+    Skills: str
+
+class AppSkillOut(AppSkillCreate):
+    id: int
+
+    class Config:
+        from_attributes = True
